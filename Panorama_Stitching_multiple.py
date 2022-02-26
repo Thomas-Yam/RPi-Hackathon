@@ -246,7 +246,7 @@ if __name__ == "__main__":
 
     current_time = time.time()
     initial_time = current_time
-    end_time = time.time() + 5
+    end_time = time.time() + 10
     img_array = []
 
     while current_time <= end_time:
@@ -263,7 +263,7 @@ if __name__ == "__main__":
     cv2.destroyAllWindows()
     final_array = []
     nume = len(img_array)
-    for i in range(5):
+    for i in range(8):
         final_array.append(img_array[i*(nume//5)])
     print(final_array)
 
