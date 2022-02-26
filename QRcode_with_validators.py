@@ -32,7 +32,7 @@ while True:
         if data:
             print("data found: ", data)
             if validators.url(data):
-                response = input("Do you want to open the link? Y/N")
+                response = input("Do you want to open the link? Y/N: ")
                 if response.upper() == 'Y':
                     webbrowser.open(data, new=2)
     # display the image preview
