@@ -1,16 +1,18 @@
 import cv2
 from picamera2 import *
 from null_preview import *
-
+import time
 
 picam2 = Picamera2()
 preview = NullPreview(picam2)
 picam2.configure(picam2.preview_configuration(main={"format": 'XRGB8888', "size": (640, 480)}))
 picam2.start()
 
+time.sleep(2)
 
 # QR code detection object
 detector = cv2.QRCodeDetector()
+
 
 while True:
     # get the image
