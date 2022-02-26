@@ -2,9 +2,7 @@ import os
 import cv2
 import math
 import numpy as np
-from picamera2 import *
-from null_preview import *
-      
+import time     
 
 def ReadImage(ImageFolderPath):
     Images = []									# Input Images will be stored in this list.
@@ -239,19 +237,16 @@ def ProjectOntoCylinder(InitialImage):
 if __name__ == "__main__":
 
     # Start Picamera
-    picam2 = Picamera2()
-    preview = NullPreview(picam2)
-    picam2.configure(picam2.preview_configuration(main={"format": 'XRGB8888', "size": (400, 400)}))
-    picam2.start()
+    cap = cv2.VideoCapture(0)
 
     current_time = time.time()
     initial_time = current_time
-    end_time = time.time() + 7
+    end_time = time.time() + 2
     img_array = []
 
     while current_time <= end_time:
         # get the image
-        img = picam2.capture_array()
+        ret, img = cap.read()
         # display the image preview
         cv2.imshow("code detector", img)
         if(cv2.waitKey(1) == ord("q")):
@@ -263,9 +258,8 @@ if __name__ == "__main__":
     cv2.destroyAllWindows()
     final_array = []
     nume = len(img_array)
-    number_of_images = 10
-    for i in range(number_of_images):
-        final_array.append(img_array[i*(nume//number_of_images)])
+    for i in range(5):
+        final_array.append(img_array[i*(nume//5)])
     print(final_array)
 
     for c, image in enumerate(final_array):
@@ -278,7 +272,7 @@ if __name__ == "__main__":
     for i in range(1, len(Images)):
         StitchedImage = StitchImages(BaseImage, Images[i])
         BaseImage = StitchedImage.copy()
-        print("Compiling image number {}".format(i))
+        print("Compilith image number {}".format(i))
 
     cv2.imwrite("Stitched_Panorama.png", BaseImage)
     cv2.imshow("Stitched_Panorama.png", BaseImage)
