@@ -35,7 +35,7 @@ lmain.grid(row=0, column=0)
 cap = picam2.capture_array()
 
 def show_frame(initial=False, invert=False, sketch=False, grey=False, outline=True):
-    _, frame = cap.read()
+    frame = cap
     frame = cv2.flip(frame, 1)
     if initial is True:
         cv2image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGBA)
