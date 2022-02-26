@@ -15,9 +15,7 @@ while True:
     detectedBarcodes = decode(image)
 
     for barcode in detectedBarcodes:
-        data = barcode.data.decode()       
-        print(barcode.data.decode())
-        print(barcode.type)
+        data = barcode.data.decode()
 
         # check if it is a QR code
         if barcode.type == 'QRCODE':
@@ -40,7 +38,8 @@ while True:
     # check if it is a link
     if data:
         if data != data0:
-            print("data found: ", data)
+            print("Data found: ", data)
+            print("Data type: ", barcode.type)
             data0 = data
             if validators.url(data):
                 response = input("Do you want to open the link? (Y, YES): ")
