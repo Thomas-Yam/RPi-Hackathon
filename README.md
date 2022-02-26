@@ -1,3 +1,6 @@
-# RPi-Hackathon
+# CUES x Raspberry Pi Hackathon
 
-Enjoy! 
+1. QR code and barcode scanner
+2. Panorama photo stitching 
+
+
