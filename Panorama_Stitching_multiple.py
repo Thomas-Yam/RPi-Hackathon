@@ -241,7 +241,7 @@ if __name__ == "__main__":
     # Start Picamera
     picam2 = Picamera2()
     preview = NullPreview(picam2)
-    picam2.configure(picam2.preview_configuration(main={"format": 'XRGB8888', "size": (640, 480)}))
+    picam2.configure(picam2.preview_configuration(main={"format": 'XRGB8888', "size": (400, 400)}))
     picam2.start()
 
     current_time = time.time()
