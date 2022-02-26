@@ -30,11 +30,13 @@ while True:
         cv2.putText(img, data, (int(bbox[0][0][0]), int(bbox[0][0][1]) - 10), cv2.FONT_HERSHEY_SIMPLEX,
                     0.5, (0, 255, 0), 2)
         if data:
-            print("data found: ", data)
-            if validators.url(data):
-                response = input("Do you want to open the link? Y/N")
-                if response.upper() == 'Y':
-                    webbrowser.open(data, new=2)
+            if data != data_previous: # check if data is redundant 
+                data_previous = data
+                print("data found: ", data)
+                if validators.url(data):
+                    response = input("Do you want to open the link? Y/N: ")
+                    if response.upper() == 'Y':
+                        webbrowser.open(data, new=2)
     # display the image preview
     cv2.imshow("code detector", img)
     if(cv2.waitKey(1) == ord("q")):
