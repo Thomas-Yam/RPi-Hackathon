@@ -277,7 +277,7 @@ if __name__ == "__main__":
     for i in range(1, len(Images)):
         StitchedImage = StitchImages(BaseImage, Images[i])
         BaseImage = StitchedImage.copy()
-        print("Compilith image number {}".format{i})
+        print("Compilith image number {}".format(i))
 
     cv2.imwrite("Stitched_Panorama.png", BaseImage)
     cv2.imshow("Stitched_Panorama.png", BaseImage)
