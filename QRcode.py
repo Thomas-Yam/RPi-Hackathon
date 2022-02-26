@@ -1,12 +1,8 @@
 import cv2
 from picamera2 import *
 from null_preview import *
-<<<<<<< HEAD
 import webbrowser
-
-=======
 import time
->>>>>>> 6c2e8188c810dc4758347c37aa0ff5174942a93e
 
 picam2 = Picamera2()
 preview = NullPreview(picam2)
