@@ -1,6 +1,7 @@
 import cv2
 from picamera2 import *
 from null_preview import *
+import webbrowser
 
 
 picam2 = Picamera2()
@@ -27,6 +28,7 @@ while True:
                     0.5, (0, 255, 0), 2)
         if data:
             print("data found: ", data)
+            webbrowser.open(data, new=2)
     # display the image preview
     cv2.imshow("code detector", img)
     if(cv2.waitKey(1) == ord("q")):
