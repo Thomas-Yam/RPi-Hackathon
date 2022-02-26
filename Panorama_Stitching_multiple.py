@@ -246,7 +246,7 @@ if __name__ == "__main__":
 
     current_time = time.time()
     initial_time = current_time
-    end_time = time.time() + 2
+    end_time = time.time() + 7
     img_array = []
 
     while current_time <= end_time:
@@ -263,8 +263,9 @@ if __name__ == "__main__":
     cv2.destroyAllWindows()
     final_array = []
     nume = len(img_array)
-    for i in range(5):
-        final_array.append(img_array[i*(nume//5)])
+    number_of_images = 10
+    for i in range(number_of_images):
+        final_array.append(img_array[i*(nume//number_of_images)])
     print(final_array)
 
     for c, image in enumerate(final_array):
@@ -277,7 +278,7 @@ if __name__ == "__main__":
     for i in range(1, len(Images)):
         StitchedImage = StitchImages(BaseImage, Images[i])
         BaseImage = StitchedImage.copy()
-        print("Compilith image number {}".format(i))
+        print("Compiling image number {}".format(i))
 
     cv2.imwrite("Stitched_Panorama.png", BaseImage)
     cv2.imshow("Stitched_Panorama.png", BaseImage)
