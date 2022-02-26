@@ -32,7 +32,9 @@ while True:
         if data:
             print("data found: ", data)
             if validators.url(data):
-                webbrowser.open(data, new=2)
+                response = input("Do you want to open the link? Y/N")
+                if response.upper() == 'Y':
+                    webbrowser.open(data, new=2)
     # display the image preview
     cv2.imshow("code detector", img)
     if(cv2.waitKey(1) == ord("q")):
