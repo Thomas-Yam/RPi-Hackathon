@@ -1,7 +1,6 @@
 import cv2
 from pyzbar.pyzbar import decode
  
- 
 image = cv2.imread('Barcode/qrcode.jpg')
  
 detectedBarcodes = decode(image)
