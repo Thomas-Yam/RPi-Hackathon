@@ -270,6 +270,7 @@ if __name__ == "__main__":
     path = "Image_compile"
     for c, image in enumerate(final_array):
         cv2.imwrite(os.path.join(path, "{}.png".format(c)), image)
+        print("runs")
 
     Images = ReadImage("Image_compile")
     BaseImage, _, _ = ProjectOntoCylinder(final_array[0])
