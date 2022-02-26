@@ -268,7 +268,7 @@ if __name__ == "__main__":
     print(final_array)
 
     for c, image in enumerate(final_array):
-        path = "Image_compile\{}.png".format(c)
+        path = os.path.join("Image_compile","{}.png".format(c))
         cv2.imwrite(path, image)
         print("runs")
 
