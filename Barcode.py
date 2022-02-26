@@ -1,8 +1,9 @@
 import cv2
 from pyzbar.pyzbar import decode
  
+cap = cv2.VideoCapture(0)
  
-image = cv2.imread('Barcode/qrcode.jpg')
+ret, image = cap.read()
  
 detectedBarcodes = decode(image)
  
