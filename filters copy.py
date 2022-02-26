@@ -1,8 +1,7 @@
 from ast import Invert
 import cv2
 
-from PIL import Image
-from PIL import ImageTk
+
 import tkinter as tk
 
 import time
