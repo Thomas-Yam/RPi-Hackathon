@@ -4,7 +4,7 @@ from picamera2 import *
 
 
 cap = Picamera2()
-cap.configure(picamera.preview_configuration(main={"format": 'XRGB8888', "size": (640, 480)}))
+cap.configure(cap.preview_configuration(main={"format": 'XRGB8888', "size": (640, 480)}))
 cap.start()
 
 
