@@ -139,20 +139,23 @@ preview = NullPreview(picam2)
 picam2.configure(picam2.preview_configuration(main={"format": 'XRGB8888', "size": (640, 480)}))
 picam2.start()
 
-while True:
+img_array = []
+
+while len(img_array) <= 20:
     # get the image
     img = picam2.capture_array()
     # display the image preview
     cv2.imshow("code detector", img)
     if(cv2.waitKey(1) == ord("q")):
         break
+    img_array.append(img)
     
 # free camera object and exit
 cv2.destroyAllWindows()
 
 # capture images
-imageA = 
-
+imageA = img[0]
+imageB = img[-1]
 imageA = imutils.resize(imageA, width=400)
 imageB = imutils.resize(imageB, width=400)
 # stitch the images together to create a panorama
