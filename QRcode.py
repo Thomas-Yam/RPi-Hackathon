@@ -1,6 +1,6 @@
 import cv2
 from picamera2 import *
-
+from null_preview import *
 
 
 picam2 = Picamera2()
