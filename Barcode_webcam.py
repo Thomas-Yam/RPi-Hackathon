@@ -9,6 +9,7 @@ data = None
 data0 = None
 
 while True:
+    data = None
     ret, image = cap.read()
     detectedBarcodes = decode(image)
     for barcode in detectedBarcodes:
@@ -39,7 +40,7 @@ while True:
             print("data found: ", data)
             data0 = data
             if validators.url(data):
-                response = input("Do you want to open the link? Y/N: ")
+                response = input("Do you want to open the link? (Y, YES): ")
                 data0 = None
                 if response.upper().strip() == 'Y' or response.upper().strip() == 'YES':
                     webbrowser.open(data, new=2)
