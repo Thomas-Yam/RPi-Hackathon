@@ -12,6 +12,8 @@ picam2.start()
 
 time.sleep(2)
 
+data_previous = None
+
 # QR code detection object
 detector = cv2.QRCodeDetector()
 
