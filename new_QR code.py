@@ -12,11 +12,10 @@ picam2.start()
 
 time.sleep(2)
 
-data_previous = None
-
 # QR code detection object
 detector = cv2.QRCodeDetector()
 
+data0 = None
 
 while True:
     # get the image
@@ -32,13 +31,15 @@ while True:
         cv2.putText(img, data, (int(bbox[0][0][0]), int(bbox[0][0][1]) - 10), cv2.FONT_HERSHEY_SIMPLEX,
                     0.5, (0, 255, 0), 2)
         if data:
-            if data != data_previous: # check if data is redundant 
-                data_previous = data
+            if data != data0:
                 print("data found: ", data)
+                data0 = data
                 if validators.url(data):
                     response = input("Do you want to open the link? Y/N: ")
-                    if response.upper() == 'Y':
+                    data0 = None
+                    if response.upper().strip() == 'Y' or response.upper().strip() == 'YES':
                         webbrowser.open(data, new=2)
+            
     # display the image preview
     cv2.imshow("code detector", img)
     if(cv2.waitKey(1) == ord("q")):
