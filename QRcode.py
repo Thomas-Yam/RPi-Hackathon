@@ -1,7 +1,11 @@
 import cv2
 from picamera2 import *
 
+
+
 cap = Picamera2()
+cap.configure(picamera.preview_configuration(main={"format": 'XRGB8888', "size": (640, 480)}))
+cap.start()
 
 
 # QR code detection object
