@@ -2,6 +2,8 @@ import cv2
 from picamera2 import *
 
 picamera = Picamera2()
+picamera.configure(picamera.preview_configuration(main={"format": 'XRGB8888', "size": (640, 480)}))
+picamera.start()
 
 # set up camera object
 cap = cv2.VideoCapture(picamera)
