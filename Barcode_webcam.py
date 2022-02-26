@@ -15,6 +15,7 @@ while True:
     for barcode in detectedBarcodes:
         data = barcode.data.decode()       
         print(barcode.data.decode())
+        print(barcode.type)
 
         # check if it is a QR code
         if barcode.type == 'QRCODE':
