@@ -267,17 +267,17 @@ if __name__ == "__main__":
         final_array.append(img_array[i*(nume//5)])
     print(final_array)
 
-    path = "Image_compile"
     for c, image in enumerate(final_array):
-        cv2.imwrite(os.path.join(path, "{}.png".format(c)), image)
+        path = os.path.join("Image_compile","{}.png".format(c))
+        cv2.imwrite(path, image)
         print("runs")
 
     Images = ReadImage("Image_compile")
-    BaseImage, _, _ = ProjectOntoCylinder(final_array[0])
-    for i in range(1, len(final_array)):
-        StitchedImage = StitchImages(BaseImage, final_array[i])
-
-        BaseImage = StitchedImage.copy()    
+    BaseImage, _, _ = ProjectOntoCylinder(Images[0])
+    for i in range(1, len(Images)):
+        StitchedImage = StitchImages(BaseImage, Images[i])
+        BaseImage = StitchedImage.copy()
+        print("Compilith image number {}".format(i))
 
     cv2.imwrite("Stitched_Panorama.png", BaseImage)
     cv2.imshow("Stitched_Panorama.png", BaseImage)
