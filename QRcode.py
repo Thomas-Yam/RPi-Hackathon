@@ -3,9 +3,10 @@ from picamera2 import *
 
 
 
-cap = Picamera2()
-cap.configure(cap.preview_configuration(main={"format": 'XRGB8888', "size": (640, 480)}))
-cap.start()
+picam2 = Picamera2()
+preview = NullPreview(picam2)
+picam2.configure(picam2.preview_configuration(main={"format": 'XRGB8888', "size": (640, 480)}))
+picam2.start()
 
 
 # QR code detection object
@@ -13,7 +14,7 @@ detector = cv2.QRCodeDetector()
 
 while True:
     # get the image
-    _, img = cap.read()
+    img = picam2.capture_array()
     # get bounding box coords and data
     data, bbox, _ = detector.detectAndDecode(img)
     
@@ -31,5 +32,4 @@ while True:
     if(cv2.waitKey(1) == ord("q")):
         break
 # free camera object and exit
-cap.release()
 cv2.destroyAllWindows()
