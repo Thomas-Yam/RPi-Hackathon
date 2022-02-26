@@ -22,21 +22,21 @@ while True:
     frame = picam2.capture_array()
     
     # Normal
-    #cv2image = cv2.cvtColor(img, cv2.COLOR_BGR2RGBA)
+    #frame = cv2.cvtColor(img, cv2.COLOR_BGR2RGBA)
 
     # Invert
-    #cv2image = cv2.bitwise_not(frame)
+    #frame = cv2.bitwise_not(frame)
 
     # Sketch
-    skgray, cv2image = cv2.pencilSketch(frame, sigma_s=100, sigma_r=0.05, shade_factor=0.075) 
+    skgray, frame = cv2.pencilSketch(frame, sigma_s=100, sigma_r=0.05, shade_factor=0.075) 
 
     # Grey
-    #cv2image = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+    #frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
     # Outline
     #gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     #blurred = cv2.GaussianBlur(gray, (5, 5), 0)
-    #cv2image = cv2.Canny(blurred, 40, 170)
+    #frame = cv2.Canny(blurred, 40, 170)
 
     # display the image preview
     cv2.imshow("Filter", cv2image)
