@@ -246,7 +246,7 @@ if __name__ == "__main__":
 
     current_time = time.time()
     initial_time = current_time
-    end_time = time.time() + 10
+    end_time = time.time() + 2
     img_array = []
 
     while current_time <= end_time:
@@ -261,10 +261,13 @@ if __name__ == "__main__":
         
     # free camera object and exit
     cv2.destroyAllWindows()
-    
-    BaseImage, _, _ = ProjectOntoCylinder(img_array[0])
-    for i in range(1, len(img_array)):
-        StitchedImage = StitchImages(BaseImage, img_array[i])
+    final_array = []
+    nume = len(img_array)
+    for i in range(5):
+        final_array.append(img_array[i*(nume//5)])
+    BaseImage, _, _ = ProjectOntoCylinder(final_array[0])
+    for i in range(1, len(final_array)):
+        StitchedImage = StitchImages(BaseImage, final_array[i])
 
         BaseImage = StitchedImage.copy()    
 
