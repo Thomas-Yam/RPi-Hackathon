@@ -1,10 +1,8 @@
 import cv2
 from picamera2 import *
 
-picamera = Picamera2()
+cap = Picamera2()
 
-# set up camera object
-cap = cv2.VideoCapture(picamera)
 
 # QR code detection object
 detector = cv2.QRCodeDetector()
