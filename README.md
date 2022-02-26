@@ -5,6 +5,6 @@
 
 * 2. Panorama photo stitching 
   * Panorama_Stitching_multiple.py
-  * The file Image_compile is required
+  * The folder Image_compile is required
 
 
