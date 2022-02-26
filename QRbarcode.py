@@ -17,6 +17,8 @@ data = None
 data0 = None
 
 while True:
+    data = None 
+    
     # get the image
     image = picam2.capture_array()
     detectedBarcodes = decode(image)
