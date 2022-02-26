@@ -1,5 +1,5 @@
 import cv2
-import picamera2 as *
+from picamera2 import *
 
 picamera = Picamera2()
 
