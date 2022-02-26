@@ -266,6 +266,12 @@ if __name__ == "__main__":
     for i in range(5):
         final_array.append(img_array[i*(nume//5)])
     print(final_array)
+
+    path = "Image_compile"
+    for c, image in enumerate(final_array):
+        cv2.imwrite(os.path.join(path, "{}.png".format(c)), image)
+
+    Images = ReadImage("Image_compile")
     BaseImage, _, _ = ProjectOntoCylinder(final_array[0])
     for i in range(1, len(final_array)):
         StitchedImage = StitchImages(BaseImage, final_array[i])
