@@ -246,7 +246,7 @@ if __name__ == "__main__":
 
     current_time = time.time()
     initial_time = current_time
-    end_time = time.time() + 10
+    end_time = time.time() + 8
     img_array = []
 
     while current_time <= end_time:
