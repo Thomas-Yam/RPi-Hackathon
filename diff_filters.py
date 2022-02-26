@@ -39,7 +39,7 @@ while True:
     #frame = cv2.Canny(blurred, 40, 170)
 
     # display the image preview
-    cv2.imshow("Filter", cv2image)
+    cv2.imshow("Filter", frame)
     if(cv2.waitKey(1) == ord("q")):
         break
 # free camera object and exit
