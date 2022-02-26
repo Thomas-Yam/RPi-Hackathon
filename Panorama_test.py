@@ -1,9 +1,7 @@
 import cv2
-from picamera2 import *
 import numpy as np
 import imutils
 import argparse
-from null_preview import *
 import time
 
 class Stitcher:
@@ -126,35 +124,17 @@ class Stitcher:
 		# return the visualization
         return vis
 
-# Start Picamera
-picam2 = Picamera2()
-preview = NullPreview(picam2)
-picam2.configure(picam2.preview_configuration(main={"format": 'XRGB8888', "size": (640, 480)}))
-picam2.start()
-
-current_time = time.time()
-initial_time = current_time
-end_time = time.time() + 10
-
-while current_time <= end_time:
-    # get the image
-    img = picam2.capture_array()
-    # display the image preview
-    cv2.imshow("code detector", img)
-    if(cv2.waitKey(1) == ord("q")):
-        break
-    current_time = time.time()
-    if current_time - initial_time < 1:
-        imageA = img
-    elif end_time - current_time < 1:
-        imageB = img
+ap = argparse.ArgumentParser()
+ap.add_argument("-f", "--first", required=True,
+	help="path to the first image")
+ap.add_argument("-s", "--second", required=True,
+	help="path to the second image")
+args = vars(ap.parse_args())
     
-# free camera object and exit
-cv2.destroyAllWindows()
 
 # capture images
-imageA = img[0]
-imageB = img[-1]
+imageA = cv2.imread(args["first"])
+imageB = cv2.imread(args["second"])
 imageA = imutils.resize(imageA, width=400)
 imageB = imutils.resize(imageB, width=400)
 # stitch the images together to create a panorama
