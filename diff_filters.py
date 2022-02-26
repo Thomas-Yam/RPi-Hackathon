@@ -19,7 +19,7 @@ data0 = None
 
 while True:
     # get the image
-    img = picam2.capture_array()
+    frame = picam2.capture_array()
     
     # Normal
     #cv2image = cv2.cvtColor(img, cv2.COLOR_BGR2RGBA)
