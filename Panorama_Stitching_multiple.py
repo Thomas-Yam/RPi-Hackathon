@@ -263,8 +263,9 @@ if __name__ == "__main__":
     cv2.destroyAllWindows()
     final_array = []
     nume = len(img_array)
-    for i in range(8):
-        final_array.append(img_array[i*(nume//5)])
+    number_of_images = 8
+    for i in range(number_of_images):
+        final_array.append(img_array[i*(nume//number_of_images)])
     print(final_array)
 
     for c, image in enumerate(final_array):
