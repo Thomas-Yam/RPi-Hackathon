@@ -17,8 +17,8 @@ data = None
 data0 = None
 
 while True:
-    data = None 
-    
+    data = None  
+
     # get the image
     image = picam2.capture_array()
     detectedBarcodes = decode(image)
@@ -26,6 +26,7 @@ while True:
     for barcode in detectedBarcodes:
         data = barcode.data.decode()       
         print(barcode.data.decode())
+        print(barcode.type)
 
         # check if it is a QR code
         if barcode.type == 'QRCODE':
@@ -51,7 +52,7 @@ while True:
             print("data found: ", data)
             data0 = data
             if validators.url(data):
-                response = input("Do you want to open the link? Y/N: ")
+                response = input("Do you want to open the link? (Y, YES): ")
                 data0 = None
                 if response.upper().strip() == 'Y' or response.upper().strip() == 'YES':
                     webbrowser.open(data, new=2)

@@ -10,8 +10,10 @@ data0 = None
 
 while True:
     data = None
+    
     ret, image = cap.read()
     detectedBarcodes = decode(image)
+
     for barcode in detectedBarcodes:
         data = barcode.data.decode()       
         print(barcode.data.decode())
