@@ -263,6 +263,7 @@ if __name__ == "__main__":
     cv2.destroyAllWindows()
     final_array = []
     nume = len(img_array)
+    print(final_array)
     for i in range(5):
         final_array.append(img_array[i*(nume//5)])
     BaseImage, _, _ = ProjectOntoCylinder(final_array[0])
