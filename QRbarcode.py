@@ -13,27 +13,45 @@ picam2.start()
 
 time.sleep(2)
 
-# QR code detection object
-detector = cv2.QRCodeDetector()
-
+data = None
 data0 = None
 
 while True:
     # get the image
-    img = picam2.capture_array()
+    image = picam2.capture_array()
+    detectedBarcodes = decode(image)
 
-    detectedBarcodes = decode(img)
-    
     for barcode in detectedBarcodes:
-        (x, y, w, h) = barcode.rect
-        cv2.rectangle(img, (x, y), (x + w, y + h), (255, 0, 0), 5)
-        print(barcode.data)
-        print(barcode.type)
-            
-    # display the image preview
-    cv2.imshow("code detector", img)
+        data = barcode.data.decode()       
+        print(barcode.data.decode())
+
+        # check if it is a QR code
+        if barcode.type == 'QRCODE':
+            (x, y, w, h) = barcode.rect
+            cv2.rectangle(image, (x, y), (x + w, y + h), (0, 255, 0), 5)
+            cv2.putText(image, barcode.data.decode(), (x - 10, y - 10), cv2.FONT_HERSHEY_SIMPLEX,
+                    0.5, (0, 255, 0), 2)
+
+        else:
+            (x, y, w, h) = barcode.rect
+            cv2.rectangle(image, (x, y), (x + w, y + h), (0, 0, 255), 5)
+            cv2.putText(image, barcode.data.decode(), (x, y), cv2.FONT_HERSHEY_SIMPLEX,
+                    0.5, (0, 255, 0), 2) 
+    
+    cv2.imshow("Video",image)
+
     if(cv2.waitKey(1) == ord("q")):
         break
     
-# free camera object and exit
+    # check if it is a link
+    if data:
+        if data != data0:
+            print("data found: ", data)
+            data0 = data
+            if validators.url(data):
+                response = input("Do you want to open the link? Y/N: ")
+                data0 = None
+                if response.upper().strip() == 'Y' or response.upper().strip() == 'YES':
+                    webbrowser.open(data, new=2)
+
 cv2.destroyAllWindows()
